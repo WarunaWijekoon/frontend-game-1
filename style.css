@@ -1,0 +1,369 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#exitButton, #exitButton2{
+    margin-right: 20px;
+    padding: 10px 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: system-ui, sans-serif;
+    border-radius: 10px;
+    background-color: red;
+    border: none;
+    box-shadow: 0 0 4px 2px white;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 0 4px 4px white;
+        background-color: yellowgreen;
+        width: 30%;
+    }
+
+    &:active {
+        box-shadow: 0 0 4px 4px white,  inset 0 0 5px 3px #8a8a8a;
+    }
+}
+#startAgainButton, #startAgainButton2{
+    margin-right: 20px;
+    padding: 10px 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: system-ui, sans-serif;
+    border-radius: 10px;
+    background-color: cornflowerblue;
+    border: none;
+    box-shadow: 0 0 4px 2px white;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 0 4px 4px white;
+        background-color: yellowgreen;
+        width: 30%;
+    }
+
+    &:active {
+        box-shadow: 0 0 4px 4px white,  inset 0 0 5px 3px #8a8a8a;
+    }
+}
+
+
+#character {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 20px;
+    top: -20px;
+}
+#goal{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 12000;
+
+}
+
+.rotate {
+    transform: rotateY(-180deg);
+}
+.modal-body{
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#b4e391+0,61c419+50,b4e391+100;Green+3D */
+    background: radial-gradient(ellipse at center,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+}
+.modal-footer{
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f9c667+0,f79621+100;Orange+3D+%234 */
+    background: radial-gradient(ellipse at center,  rgba(249,198,103,1) 0%,rgba(247,150,33,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+}
+#platform {
+    width: 100%;
+    height: 128px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+
+    div {
+        height: 100%;
+
+        &:first-child {
+            width: 128px;
+            background-image: url('/image/tile/Tile (1).png');
+        }
+
+        &:nth-child(2){
+            flex-grow: 1;
+            background-image: url('/image/tile/Tile (2).png');
+        }
+
+        &:last-child {
+            width: 128px;
+            background-image: url('/image/tile/Tile (3).png');
+        }
+    }
+}
+
+body {
+
+    background-image: url('/image/BG.jpg');
+    background-position: top center;
+    overflow: hidden;
+}
+
+#overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    flex-direction: column;
+    font-family: system-ui, sans-serif;
+    z-index: 1;
+    gap: 20px;
+
+    h1 {
+        text-shadow: 0 0 8px white;
+    }
+
+    #progress-bar {
+        width: 90%;
+         height: 10px;
+        background-color: #787878;
+        box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.66);
+        border-radius: 5px;
+
+        #bar {
+            width: 0;
+            height: 100%;
+            background-color: rgba(244, 244, 244, 0.94);
+            border-radius: 5px;
+            transition: width 500ms;
+        }
+    }
+}
+
+.hide {
+    animation: fade 700ms forwards;
+}
+
+.hide > * {
+    display: none;
+}
+
+@keyframes fade {
+    from {
+        transform: scaleY(1);
+    }
+    to {
+        transform: scaleY(0);
+    }
+}
+
+#start-screen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(23, 0, 32);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+        padding: 10px 20px;
+        font-size: 2rem;
+        font-weight: bold;
+        font-family: system-ui, sans-serif;
+        border-radius: 10px;
+        background-color: #ffffff;
+        border: none;
+        box-shadow: 0 0 4px 2px white;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0 0 4px 4px white;
+            background-color: yellowgreen;
+            width: 30%;
+        }
+
+        &:active {
+            box-shadow: 0 0 4px 4px white,  inset 0 0 5px 3px #8a8a8a;
+        }
+    }
+
+    h2 {
+        font-family: system-ui, sans-serif;
+        color: white;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 1.8rem;
+
+        span {
+            font-size: 3rem;
+            vertical-align: sub;
+            color: lawngreen;
+            text-shadow: 1px 1px 9px #7aff01;
+        }
+    }
+
+    #footer {
+        color: white;
+        font-family: system-ui, sans-serif;
+        margin-top: 40px;
+        font-size: small;
+    }
+}
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+}
+#projectiles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.projectile {
+    position: absolute;
+    border: red solid 1px;
+    width: 26px;
+    height: 26px;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d0e4f7+0,73b1e7+24,0a77d5+50,539fe1+79,87bcea+100;Blue+Pipe+%231 */
+    background: radial-gradient(ellipse at center,  rgba(208,228,247,1) 0%,rgba(115,177,231,1) 24%,rgba(10,119,213,1) 50%,rgba(83,159,225,1) 79%,rgba(135,188,234,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+    border-radius: 50%;
+}
+
+.enemy {
+    position: absolute;
+    background-image: url("public/image/enemy.gif");
+    border-radius: 100%;
+    width: 250px;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 9986;
+}
+
+.stage {
+    border-radius: 10%;
+    position: absolute;
+    width: 200px;
+    height: 64px;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#b4ddb4+0,83c783+17,52b152+33,008a00+67,005700+83,002400+100;Green+3D+%231 */
+    background: linear-gradient(to bottom,  rgba(180,221,180,1) 0%,rgba(131,199,131,1) 17%,rgba(82,177,82,1) 33%,rgba(0,138,0,1) 67%,rgba(0,87,0,1) 83%,rgba(0,36,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+    z-index: 9998;
+border: #7aff01 solid 1px;
+    &:last-child{
+
+        z-index: 1000;
+    }
+}
+
+
+.playwrite-ng-modern-p1 {
+                          font-family: "Playwrite NG Modern", cursive;
+                          font-optical-sizing: auto;
+                          font-weight: 150;
+                          font-style: normal;
+}
+.animate__shakeX {
+    display: inline-block;
+    margin: 0 0.5rem;
+
+    animation: bounce; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
+    animation-iteration-count: infinite;
+
+}
+#death-count{
+margin-top: 70px;
+
+    padding: 30px;
+    font-weight: bolder;
+    border: red solid 3px;
+
+   font-size: larger;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7abcff+0,60abf8+44,4096ee+100;Blue+3D+%2314 */
+    background: radial-gradient(ellipse at center,  rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+}
+#death-count {
+    display: inline-block;
+    margin: 0 0.5rem;
+
+    animation: bounce; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+    animation-iteration-count: infinite;
+}
+.lds-ripple {
+    /* change color here */
+    color: #1c4c5b
+}
+.lds-ripple,
+.lds-ripple div {
+    box-sizing: border-box;
+}
+.lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-ripple div {
+    position: absolute;
+    border: 4px solid currentColor;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 8px;
+        height: 8px;
+        opacity: 0;
+    }
+    4.9% {
+        top: 36px;
+        left: 36px;
+        width: 8px;
+        height: 8px;
+        opacity: 0;
+    }
+    5% {
+        top: 36px;
+        left: 36px;
+        width: 8px;
+        height: 8px;
+        opacity: 1;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        width: 80px;
+        height: 80px;
+        opacity: 0;
+    }
+}
+.p1{
+    margin-top: 20px;
+
+}
